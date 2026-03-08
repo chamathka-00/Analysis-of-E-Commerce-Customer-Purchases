@@ -1,128 +1,113 @@
-# Analysis of E-Commerce Customer Purchases – Data Analytics Project
+# Analysis of E-Commerce Customer Purchases
 
-CM1606 – Computational Mathematics
+An R-based data analytics project investigating e-commerce customer transaction data to understand spending behaviour, discount usage, regional differences, and predictive patterns. Using a dataset of 2,000 online purchases, the project applies statistical methods and modelling techniques to explore trends, estimate probabilities, fit distributions, and build regression models.
 
-BSc (Hons) Artificial Intelligence & Data Science
 
-Robert Gordon University (RGU)
 
-Coursework – Y1S2
+## Table of Contents
 
-## 📌 Project Overview
+- [Overview](#overview)
+- [Project Components](#project-components)
+  - [1. Exploratory Data Analysis](#1-exploratory-data-analysis)
+  - [2. Probability Analysis](#2-probability-analysis)
+  - [3. Distribution Fitting](#3-distribution-fitting)
+  - [4. Predictive Modelling](#4-predictive-modelling)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [License](#license)
 
-This project is an R-based data analytics investigation developed for the CM1606 Computational Mathematics module. The coursework focuses on analysing e-commerce customer transaction data to understand spending behaviour, usage of discounts, regional differences, and predictive patterns.
 
-Using a dataset of 2000 online purchases, the project applies statistical methods and modelling techniques to explore trends, estimate probabilities, fit distributions, and build regression models—core skills required in the module.
 
-This work fully aligns with the coursework requirements, including R Markdown analysis, probability estimation, visualisation, interpretation, and mathematical reasoning.
+## Overview
 
-## 🎯 Learning Objectives
+This project analyses a dataset of 2,000 e-commerce customer purchases to uncover patterns in spending behaviour, discount usage, and the relationship between time spent on a website and purchase value. The analysis is fully reproducible using R Markdown and covers the full pipeline from data cleaning through to regression modelling.
 
-This project demonstrates the ability to:
 
-* Perform Exploratory Data Analysis (EDA) using R
 
-* Generate meaningful visualisations (histograms, density plots, boxplots, scatterplots)
+## Project Components
 
-* Apply probability theory and interpret conditional probabilities
+### 1. Exploratory Data Analysis
 
-* Construct and interpret contingency tables
+- Summary statistics for all numerical variables
+- Data cleaning and missing value checks
+- Outlier detection using the interquartile range (IQR) method
+- Visualisations:
+  - Histogram with density overlay for purchase amounts
+  - Boxplot of time spent on site by region
+  - Scatterplot of purchase amount vs. time spent
 
-* Fit Poisson and Normal distributions to real-world data
+**Key findings:** Purchase amounts are approximately normally distributed. Time spent on site ranges between 1–20 minutes. Outliers are concentrated at higher purchase values.
 
-* Build and evaluate simple linear regression models
 
-* Interpret statistical outputs and relate them to real business scenarios
 
-* Produce reproducible analysis using R Markdown
+### 2. Probability Analysis
 
-## 🧪 Project Components
-🔹 1. Exploratory Data Analysis (EDA)
+- Probability that a purchase amount exceeds $75
+- Conditional probability of discount usage for high spenders (purchase > $100)
+- Contingency tables:
+  - Region × Discount Usage
+  - Previous Purchases × Discount Usage
+- Conditional probabilities broken down by region
 
-* Summary statistics for all numerical variables
+**Key findings:** High spenders use discounts more frequently. Regional discount usage patterns show slight variation. Discount behaviour is broadly consistent across different customer experience levels.
 
-* Data cleaning and missing value checks
 
-* Outlier detection using IQR
 
-* Visualisations:
+### 3. Distribution Fitting
 
-* Histogram + density overlay for purchase amounts
+- Poisson distribution fitted to `number_of_previous_purchases`
+- Normal distribution fitted to `purchase_amount`
+- Histogram with fitted theoretical curve overlay
+- Q-Q plot to validate normality assumption
 
-* Boxplot of time spent on site by region
+**Key findings:** The Poisson distribution fits repeat-purchase behaviour well. Spending closely follows a normal distribution, with mild deviations in the tails.
 
-* Scatterplot of purchase amount vs time spent
 
-Insights:
-Purchase amounts are approx. normally distributed, time spent varies between 1–20 minutes, and outliers mainly occur at higher values.
 
-🔹 2. Probability Analysis
+### 4. Predictive Modelling
 
-* Probability that purchase amount > $75
+- Scatterplot with fitted linear regression line
+- Pearson correlation coefficient and full model summary output
+- Derived linear equation
+- Prediction of purchase amount at 12 minutes of site time
 
-* Conditional probability of discount usage for high spenders (> $100)
+**Key findings:** A weak positive relationship exists between time spent on site and purchase amount. The model has limited predictive power, suggesting other factors drive spending more strongly.
 
-* Contingency tables:
 
-* Region × Discount Usage
 
-* Previous Purchases × Discount Usage
+## Technologies Used
 
-* Conditional probabilities per region
+| Tool / Concept | Purpose |
+|---|---|
+| R & RStudio | Primary analysis environment |
+| R Markdown | Reproducible reporting |
+| `ggplot2` | Data visualisation |
+| Base R stats | Summary statistics, probability, distribution fitting |
+| `fitdistrplus` | Distribution fitting (Poisson, Normal) |
+| Linear regression (`lm`) | Predictive modelling |
 
-Insights:
-High spenders frequently use discounts; regional discount usage patterns differ slightly; behaviour is consistent across customer experience levels.
 
-🔹 3. Distribution Fitting
 
-* Poisson distribution fitted to number_of_previous_purchases
+## Getting Started
 
-* Normal distribution fitted to purchase_amount
+**Prerequisites:** R (4.0+) and RStudio
 
-* Histogram with fitted curve
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
 
-* Q-Q plot to validate normality
+2. Open the `.Rmd` file in RStudio.
 
-Insights:
-Poisson fits repeat-purchase behaviour well; spending aligns closely with a normal distribution except for mild tail deviations.
+3. Install required packages if not already available:
+   ```r
+   install.packages(c("ggplot2", "fitdistrplus", "dplyr"))
+   ```
 
-🔹 4. Predictive Modelling
+4. Knit the R Markdown document to generate the full analysis report (HTML or PDF).
 
-* Scatterplot with fitted regression line
 
-* Correlation and model summary output
 
-* Fitted linear equation
+## License
 
-* Predicted purchase amount at 12 minutes of site time
-
-Insights:
-A weak positive relationship exists between time spent and purchase amount; model suggests minimal predictive power.
-
-## ⚙️ Technologies & Concepts Used
-
-* R & RStudio
-
-* R Markdown reporting
-
-* Statistical summaries and probability theory
-
-* Data visualisation
-
-* Poisson & Normal distribution fitting
-
-* Linear regression modelling
-
-* Interpretation and mathematical reasoning
-
-* Reproducible workflow and structured analysis
-
-## 📜 Academic Integrity
-
-This repository contains original code written for submission to RGU. Reusing or submitting this work elsewhere without attribution may violate academic integrity guidelines.
-
-## 📘 License
-
-This project is licensed under the Apache License 2.0. You may view, use, and adapt the code for learning and educational purposes, provided that proper attribution is given as required by the license. 
-
-Submitting this work, or any modified version of it, as part of an academic assessment is strictly prohibited.
+This project is licensed under the [MIT License](LICENSE).
